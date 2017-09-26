@@ -2,9 +2,7 @@ var orm = require("../config/orm.js");
 
 var burger = {
   all: function(cb) {
-    orm.all("burgers", function(res) {
-      cb(res);
-    });
+    orm.all("burgers",cb);
   },
   // The variables cols and vals are arrays.
   create: function(obj, cb) {
