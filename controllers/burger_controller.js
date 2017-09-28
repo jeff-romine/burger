@@ -6,42 +6,31 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/", function(req, res) {
-  burger.all(function(data) {
-    console.log(JSON.stringify(data,null,2));
-    res.render("index", {burgers:data});
-  });
+router.get("/", function (req, res) {
+    burger.all(function (data) {
+        console.log(JSON.stringify(data, null, 2));
+        res.render("index", {burgers: data});
+    });
 });
 
-// router.post("/", function(req, res) {
-//   cat.create([
-//     "name", "sleepy"
-//   ], [
-//     req.body.name, req.body.sleepy
-//   ], function() {
-//     res.redirect("/");
-//   });
-// });
+router.post("/", function (req, res) {
+    burger.create(
+        {burger_name: req.body.burger_name},
+        () => res.redirect("/"));
+});
 
-// router.put("/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
+router.put("/:id", function (req, res) {
+    burger.update(
+        req.params.id,
+        {devoured: true},
+        () => res.redirect("/"));
+});
 
-//   console.log("condition", condition);
-
-//   cat.update({
-//     sleepy: req.body.sleepy
-//   }, condition, function() {
-//     res.redirect("/");
-//   });
-// });
-
-// router.delete("/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   cat.delete(condition, function() {
-//     res.redirect("/");
-//   });
-// });
+router.delete("/:id", function (req, res) {
+    burger.delete(
+        req.params.id,
+        () => res.redirect("/"));
+});
 
 // Export routes for server.js to use.
 module.exports = router;
