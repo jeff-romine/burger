@@ -9,6 +9,18 @@ var burger = require("../models/burger.js");
 router.get("/", function (req, res) {
     burger.all(function (data) {
         console.log(JSON.stringify(data, null, 2));
+        var undevouredIndex=1;
+        var devouredIndex=1;
+
+        data.forEach((burger) => {
+            if (burger.devoured) {
+                burger.index = devouredIndex++;
+            }
+            else {
+                burger.index = undevouredIndex++;
+            }
+        });
+
         res.render("index", {burgers: data});
     });
 });
