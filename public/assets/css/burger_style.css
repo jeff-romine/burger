@@ -22,8 +22,24 @@
     height: 100%;
 }
 
-.jumbotron {
+.hero-spacer {
     height: 300px;
+}
+
+.burger-image {
+    height: 300px;
+}
+.burger-undevoured {
+    float:left
+}
+
+.devour-button {
+    float:right
+}
+
+.hero-image {
+    height: 300px;
+    background-image: url("../img/burger.jpg");
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
@@ -31,7 +47,6 @@
     margin: 0;
     background-size: cover;
 }
-
 .game-field {
     height: 515px;
 }
