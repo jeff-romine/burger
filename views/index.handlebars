@@ -6,20 +6,20 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row panel panel-default">
         <div class="col-lg-1 col-md-1 col-sm-1"></div>
         <div id="undevoured" class="col-lg-5 col-md-5 col-sm-5">
             {{#each burgers}}
                 {{#unless this.devoured}}
-                    <div class="burger-undevoured col-lg-12 col-md-12 col-sm-12">
-                        <h2>{{this.id}}. {{this.burger_name}}
+                        <h3 class="burger-name">{{this.id}}. {{this.burger_name}}
                             <form class="devour-button" action="/{{this.id}}?_method=PUT" method="POST">
                                 <input type="hidden" name="devour" value="true">
-                                <button type="submit" class="btn btn-lg">Devour!</button>
+                                <button type="submit" class="btn">Devour!</button>
                             </form>
-                        </h2>
-                    </div>
+                        </h3>
+                    <!--<div class="burger-undevoured col-lg-12 col-md-12 col-sm-12">-->
+                    <!--</div>-->
                 {{/unless}}
             {{/each}}
         </div>
@@ -28,7 +28,7 @@
 
             {{#if this.devoured}}
                 <div class="burger-devoured">
-                    <h2>{{this.id}}. {{this.burger_name}}</h2>
+                    <h3 class="burger-name">{{this.id}}. {{this.burger_name}}</h3>
                 </div>
             {{/if}}
             {{/each}}
